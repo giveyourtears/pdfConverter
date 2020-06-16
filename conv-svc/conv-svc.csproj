@@ -1,0 +1,72 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <RootNamespace>Inex.Umk.Conv</RootNamespace>
+    <SignAssembly>true</SignAssembly>
+    <DockerComposeProjectPath>..\..\docker\dc.conv-svc\docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>5421b33c-6615-4d3b-95f0-dd8e112d4e5b</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <AssemblyOriginatorKeyFile>..\..\snk\umk.snk</AssemblyOriginatorKeyFile>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\shared\ProjAssemInfo.cs" Link="ProjAssemInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\snk\umk.snk" Link="umk.snk" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="prometheus-net.AspNetCore" Version="3.5.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+    <PackageReference Include="Serilog.Enrichers.Environment" Version="2.1.3" />
+    <PackageReference Include="Serilog.Sinks.Debug" Version="1.0.1" />
+    <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="8.1.0" />
+    <PackageReference Include="SkiaSharp.Linux" Version="1.59.3" />
+    <PackageReference Include="Syncfusion.DocIO.Net.Core" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.DocIORenderer.Net.Core" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.EJ2.PdfViewer.AspNet.Core.Linux" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.Pdf.Net.Core" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.Presentation.Net.Core" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.PresentationRenderer.Net.Core" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.XlsIO.Net.Core" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.XlsIORenderer.Net.Core" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.XpsToPdfConverter.Net.Core" Version="18.1.0.56" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="storage\logs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\UmkClasses\umk-classes\umk-classes.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="storage\config\appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="storage\config\appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
